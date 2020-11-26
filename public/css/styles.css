@@ -1,3 +1,18 @@
 #footer-icons a {
   margin-right: 30px;
 }
+
+.padding-3r
+{
+  padding-bottom: 3rem;
+}
+
+#section-about {
+  background-color: #f4f4f2;
+}
+#section-room{
+  background-color: #e8e8e8;
+}
+#section-service{
+  background-color: #f4f4f2;
+}
