@@ -1,0 +1,180 @@
+<%- include('header') -%>
+
+<!-- Header -->
+
+<div class="overlay"></div>
+<header class="masthead contact-masthead mb-5">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light text-light">LIÊN HỆ</h1>
+        <p class="lead text-light">Với chúng tôi</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- End of Header -->
+<!-- Main -->
+
+<div class="container">
+
+  <div class="row">
+
+    <!-- Contact Form -->
+
+    <div class="col-md-8 py-5">
+      <div class="container">
+
+        <section class="mb-5">
+
+          <form>
+
+            <fieldset class="form-group">
+
+              <legend class="pb-2">Liên Hệ</legend>
+
+              <div class="form-group">
+                <label class="form-control-label sr-only" for="ownername">Name</label>
+                <input class="form-control" type="text" id="ownername" placeholder="Your name">
+              </div> <!-- form-group -->
+
+              <div class="form-group">
+                <label class="form-control-label sr-only" for="owneremail">Email address</label>
+                <input class="form-control" type="email" id="owneremail" aria-describedby="email"
+                  placeholder="Your email">
+              </div> <!-- form-group -->
+
+              <div class="form-group">
+                <label class="form-control-label sr-only" for="subject">Subject</label>
+                <input class="form-control" type="text" id="subject" aria-describedby="subject" placeholder="Subject">
+              </div> <!-- form-group -->
+
+              <div class="form-group">
+                <label class="form-control-label sr-only" for="yourmessage">Message</label>
+                <textarea class="form-control" id="yourmessage" rows="3" placeholder="Enter your message"></textarea>
+              </div> <!-- form-group -->
+
+              <button class="btn btn-primary" type="submit">Submit</button>
+
+            </fieldset>
+
+          </form>
+
+        </section>
+
+      </div> <!-- container -->
+    </div> <!-- col-md-8 -->
+
+    <!-- End of Contact Form -->
+
+    <!-- Sidebar -->
+
+    <div class="col-md-4 pt-sm-0 pt-md-5">
+      <div class="container pb-5 pl-5">
+        <div class="row">
+
+          <h3 class="col-sm-12 pb-2 pl-0"> Địa Chỉ </h3>
+
+          <div>
+            <p class="mb-0"><i class="fa fa-map-marker-alt text-primary pr-2"></i> Số nhà 25, tổ dân phố 21, Phường Him Lam
+              Thành phố Điện Biên Phủ, tỉnh Điện Biên</p>
+            <p><i class="fa fa-phone text-primary pr-2"></i>Phone: +84-243-8222-333</p>
+            <p><i class="fa fa-envelope text-primary pr-2"></i>Email: info@muongthanh.vn</p>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Sidebar -->
+
+  </div> <!-- row -->
+
+</div> <!-- container -->
+
+<!-- End of Main -->
+
+<!-- Đặt Ngay-->
+
+<div class="modal fade" id="servicesmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <h2 class="modal-title text-center pb-4">ĐẶT NGAY</h2>
+
+        <form>
+
+          <fieldset class="form-group">
+
+            <div class="form-group form-row">
+              <div class="form-group col">
+                <label class="col-form-label" for="check-in">Check In</label>
+                <input class="form-control" type="date" id="check-in" value="2019-08-19">
+              </div><!-- form-group -->
+
+              <div class="form-group col">
+                <label class="col-form-label" for="check-out">Check Out</label>
+                <input class="form-control" type="date" id="check-out" value="2019-08-20">
+              </div><!-- form-group -->
+            </div><!-- form-group -->
+
+            <div class="form-group form-row">
+              <div class="form-group col">
+                <label class="col-form-label">Adults</label>
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div><!-- form-group -->
+
+              <div class="form-group col">
+                <label class="col-form-label">Children</label>
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div><!-- form-group -->
+            </div><!-- form-group -->
+
+            <div class="form-group row w-100 mx-auto">
+              <label class="col-form-label">Room</label>
+              <select class="form-control">
+                <option>Luxury Suite</option>
+                <option>Signature Room</option>
+                <option>Classic Room</option>
+                <option>Deluxe Room</option>
+              </select>
+            </div><!-- form-group -->
+
+            <div class="form-group row pt-5">
+              <div class="col-auto">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+            </div>
+
+          </fieldset> <!-- form-group -->
+
+        </form>
+
+      </div> <!-- modal body -->
+    </div> <!-- modal content -->
+  </div> <!-- modal dialog -->
+</div> <!-- modal -->
+
+<script type="text/javascript">
+  $('#nav-home').removeClass('active');
+  $('#nav-contact').addClass('active');
+</script>
+
+<%- include('footer') -%>
