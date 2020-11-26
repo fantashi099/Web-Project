@@ -28,31 +28,33 @@
 
         <section class="mb-5">
 
-          <form>
+          <form action="/contact" method="POST">
 
             <fieldset class="form-group">
 
               <legend class="pb-2">Liên Hệ</legend>
 
               <div class="form-group">
-                <label class="form-control-label sr-only" for="ownername">Name</label>
+                <label class="form-control-label" for="ownername">Name:</label>
                 <input class="form-control" type="text" id="ownername" placeholder="Your name">
               </div> <!-- form-group -->
 
               <div class="form-group">
-                <label class="form-control-label sr-only" for="owneremail">Email address</label>
-                <input class="form-control" type="email" id="owneremail" aria-describedby="email"
-                  placeholder="Your email">
+                <label class="form-control-label" for="owneremail">Email address:</label>
+                <input class="form-control" type="email" id="owneremail" aria-describedby="email" placeholder="Your email" required>
               </div> <!-- form-group -->
 
               <div class="form-group">
-                <label class="form-control-label sr-only" for="subject">Subject</label>
-                <input class="form-control" type="text" id="subject" aria-describedby="subject" placeholder="Subject">
+                <label class="form-control-label" for="subject">Subject:</label>
+                <select class="form-control" id="subject">
+                  <option>Tuyển dụng</option>
+                  <option>Hỏi đáp</option>
+                </select>
               </div> <!-- form-group -->
 
               <div class="form-group">
-                <label class="form-control-label sr-only" for="yourmessage">Message</label>
-                <textarea class="form-control" id="yourmessage" rows="3" placeholder="Enter your message"></textarea>
+                <label class="form-control-label" for="yourmessage">Message:</label>
+                <textarea class="form-control" id="yourmessage" rows="3" placeholder="Enter your message" required></textarea>
               </div> <!-- form-group -->
 
               <button class="btn btn-primary" type="submit">Submit</button>
@@ -96,81 +98,6 @@
 
 <!-- End of Main -->
 
-<!-- Đặt Ngay-->
-
-<div class="modal fade" id="servicesmodal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        <h2 class="modal-title text-center pb-4">ĐẶT NGAY</h2>
-
-        <form>
-
-          <fieldset class="form-group">
-
-            <div class="form-group form-row">
-              <div class="form-group col">
-                <label class="col-form-label" for="check-in">Check In</label>
-                <input class="form-control" type="date" id="check-in" value="2019-08-19">
-              </div><!-- form-group -->
-
-              <div class="form-group col">
-                <label class="col-form-label" for="check-out">Check Out</label>
-                <input class="form-control" type="date" id="check-out" value="2019-08-20">
-              </div><!-- form-group -->
-            </div><!-- form-group -->
-
-            <div class="form-group form-row">
-              <div class="form-group col">
-                <label class="col-form-label">Adults</label>
-                <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-              </div><!-- form-group -->
-
-              <div class="form-group col">
-                <label class="col-form-label">Children</label>
-                <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-              </div><!-- form-group -->
-            </div><!-- form-group -->
-
-            <div class="form-group row w-100 mx-auto">
-              <label class="col-form-label">Room</label>
-              <select class="form-control">
-                <option>Luxury Suite</option>
-                <option>Signature Room</option>
-                <option>Classic Room</option>
-                <option>Deluxe Room</option>
-              </select>
-            </div><!-- form-group -->
-
-            <div class="form-group row pt-5">
-              <div class="col-auto">
-                <button class="btn btn-primary" type="submit">Submit</button>
-              </div>
-            </div>
-
-          </fieldset> <!-- form-group -->
-
-        </form>
-
-      </div> <!-- modal body -->
-    </div> <!-- modal content -->
-  </div> <!-- modal dialog -->
-</div> <!-- modal -->
 
 <script type="text/javascript">
   $('#nav-home').removeClass('active');
