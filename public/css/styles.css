@@ -10,9 +10,35 @@
 #section-about {
   background-color: #f4f4f2;
 }
+
 #section-room{
   background-color: #e8e8e8;
 }
+
 #section-service{
   background-color: #f4f4f2;
+}
+
+.center {
+  left: 0;
+  right: 0;
+  margin: auto;  
+}
+
+#top-left{
+  text-align: left;
+  text-align: top;
+}
+
+.font-size{
+  font-size: 13px;
+}
+.py{
+  padding-top: 5rem;
+}
+.border-inset{
+  border-style: inset;
+}
+.border-outset{
+  border-style: outset;
 }
