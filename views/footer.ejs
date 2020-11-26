@@ -55,15 +55,19 @@
         <form class="justify-content-center mx-5 mx-md-0">
           <div class="form-group">
             <label class="form-control-label sr-only" for="email">Email address</label>
-            <input class="form-control" type="email" id="email" aria-describedby="email" placeholder="Email của bạn">
+            <div class="row">
+              <div class="col-8" style="padding-right: 0px;">
+                <input class="form-control" type="email" id="email"  aria-describedby="email" placeholder="Email của bạn">
+              </div>
+              <div class="col-4">
+                <button type="submit" class="btn btn-md btn-outline-light" name="button">Đăng Ký</button>
+              </div>
+            </div>
           </div><!-- form-group -->
 
-          <div class="input-group-append">
-            <button class="btn btn-sm btn-outline-white my-0" type="button">Đăng Ký</button>
-          </div>
         </form>
 
-        <div class="icons d-flex justify-content-between mx-5 mx-md-0">
+        <div class="icons d-flex mx-5 mx-md-0" id="footer-icons">
           <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
           <a href="http://www.facebook.com"><i class="fab fa-facebook-square"></i></a>
           <a href="http://www.twitter.com"><i class="fab fa-twitter-square"></i></a>
