@@ -8885,7 +8885,7 @@ a.text-dark:hover,a.text-dark:focus{
         border-color:#dee2e6
     }
 }
-body{
+body{       
     font-family: Arial, "Helvetica Neue",Helvetica
 }
 html{
@@ -8999,6 +8999,15 @@ footer a:hover{
 }
 .rooms-slide-4{
     background:url("../images/rooms-slide-4.jpg") #8140a0
+}
+.rooms-slide-5{
+    background:url("../images/blog_1.jpg") #8140a0
+}
+.rooms-slide-6{
+    background:url("../images/mt-xoi-ngu-sac.jpg") #c73816
+}
+.rooms-slide-7{
+    background:url("../images/nt-ca-chep-nuong.jpg") #21acad
 }
 .overlay{
     position:absolute;

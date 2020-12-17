@@ -32,6 +32,14 @@ app.get('/contact', function(req,res){
   res.render('contact');
 });
 
+app.get('/restaurant-bar',function(req,res){
+  res.render('restaurant-bar');
+});
+
+app.get('/services-other',function(req,res){
+  res.render('services-other');
+});
+
 app.post('/mail', function(req,res){
   const email = {
     members: [{
