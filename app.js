@@ -40,6 +40,10 @@ app.get('/services-other',function(req,res){
   res.render('services-other');
 });
 
+app.get('/booking-selectrom',function(req,res){
+  res.render('booking-selectrom');
+});
+
 app.post('/mail', function(req,res){
   const email = {
     members: [{
