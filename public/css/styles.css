@@ -22,7 +22,63 @@
 #section-service{
   background-color: #f4f4f2;
 }
+.color-border{
+  /* border-style: solid; */
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.5);;
+/* border-color: coral; */
+/* border-width: 2px;  */
+background-color: rgb(245, 245, 245);
+}
 
+.h-2{
+  height: 2rem;
+}
+.col-12 .image{
+  width: 25%;
+  float:left;
+}
+
+.col-7 .left{
+  width: 47%;
+  float:left;
+}
+.col-7 .right{
+  width: 47%;
+  float:right;
+}
+
+.temp .left{
+  width: 45%;
+  float:left;
+}
+.temp .right{
+  width: 45%;
+  float:right;
+}
+
+.col-12 .image1{
+  width: 5%;
+  float:left;
+}
+hr.left {
+  text-align: left;
+  margin-left: 0;
+  width: 50%;
+  }
+  
+.col-12 .content1{
+  width: 90%;
+  float:left;
+}
+.col-12 .content{
+  width: 75%;
+  float: left;
+}
+.col-12 .content .form-group{
+  width: 15%;
+  float: right;
+}
 .center {
   left: 0;
   right: 0;

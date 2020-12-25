@@ -40,8 +40,12 @@ app.get('/services-other',function(req,res){
   res.render('services-other');
 });
 
-app.get('/booking-selectrom',function(req,res){
-  res.render('booking-selectrom');
+app.get('/booking',function(req,res){
+  res.render('booking');
+});
+
+app.get('/customer-info',function(req,res){
+  res.render('customer-info');
 });
 
 app.post('/mail', function(req,res){
