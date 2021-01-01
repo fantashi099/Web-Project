@@ -38,7 +38,49 @@ background-color: rgb(245, 245, 245);
   width: 25%;
   float:left;
 }
+.zoom {
+  transition: transform .2s;
+  margin: 0 auto;
+}
 
+.zoom:hover {
+  -ms-transform: scale(1.007); 
+  -webkit-transform: scale(1.007); 
+  transform: scale(1.007); 
+}
+.text {
+
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.effect-image-1{
+	position: relative;
+	display: block;
+}
+.overlay-sim-text-2{
+  transition: all .4s linear;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -o-transition: all .4s linear;
+}
+.overlay-sim-text-2{
+  position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 187, 0);
+    opacity: 0;
+}
+.effect-image-1:hover .overlay-xs-1{
+  opacity: 1;
+  visibility: visible;
+  display: block;	
+}
 .col-7 .left{
   width: 47%;
   float:left;
