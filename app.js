@@ -40,15 +40,23 @@ app.get('/services-other',function(req,res){
   res.render('services-other');
 });
 
-app.get('/booking',function(req,res){
-  res.render('booking');
-});
-
 app.get('/customer-info',function(req,res){
   res.render('customer-info');
 });
 
-app.post('/mail', function(req,res){
+app.post('/', function(req,res) {
+
+  const check_in = req.body.check_in;
+  const check_out = req.body.check_out;
+  const total_person = req.body.person;
+  const total_children = req.body.children;
+
+  res.render('booking', {checkIn: check_in, checkOut: check_out, totalPerson: total_person, totalChildren: total_children});
+});
+
+// app.post('/')
+
+app.post('/mailchimp', function(req,res){
   const email = {
     members: [{
       email_address: req.body.email,

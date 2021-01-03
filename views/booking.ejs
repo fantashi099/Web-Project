@@ -22,6 +22,7 @@
 </head>
 
 <body>
+  <!-- Section header -->
     <div class="bg-secondary text-light py-3">
         <div class="row">
             <div class="col-md-2">
@@ -41,7 +42,7 @@
             </div> <!-- col-md-4 mx-auto -->
         </div>
      </div>
-    
+
     <br><br>
     <div >
         <p  style="font-weight: 100px; text-align: center; font-size: 60px;">YOUR BOOKING</p>
@@ -71,24 +72,27 @@
                     <span style="font-size: 12px;"><strong>Kích thước giường:</strong>1 giường king size <strong>Diện tích phòng:</strong>   37 m2</span>
                     <br>
                     <br>
-                    <span style="font-size: 12px;">Chính sách hủy linh hoạt  <i style="padding-left: 10rem;" class="fad fa-user"></i><i style="padding-right: 6rem;" class="fad fa-user"></i> <span style="font-size: 18px;">đ 2.800.000 <span style="font-size: 10px;">/1 đêm</span></span> 
+                    <span style="font-size: 12px;">Chính sách hủy linh hoạt  <i style="padding-left: 10rem;" class="fad fa-user"></i><i style="padding-right: 6rem;" class="fad fa-user"></i> <span style="font-size: 18px;">đ 2.800.000 <span style="font-size: 10px;">/1 đêm</span></span>
                     <div class="form-group" style="width: 7rem;height: 0.5rem;">
-                        <select class="form-control" style="font-size: 11px;height: 28.738636px;">
-                          <option >0 phòng</option>
-                          <option>1 phòng</option>
-                          <option>2 phòng</option>
-                          <option>3 phòng</option>
-
+                        <input type="hidden" name="check_in" value="<%= checkIn %>">
+                        <input type="hidden" name="check_out" value="<%= checkOut %>">
+                        <input type="hidden" name="total_person" value="<%= totalPerson %>">
+                        <input type="hidden" name="total_children" value="<%= totalChildren %>">
+                        <select class="form-control" name="DeluxeKing" style="font-size: 11px;height: 28.738636px;">
+                          <option value="0">0 Giường</option>
+                          <option value="1">1 Giường</option>
+                          <option value="2">2 Giường</option>
                         </select>
-                      </div>    
+                      </div>
                     <br>
-                        Bữa sáng đã bao gồm 
+                        Bữa sáng đã bao gồm
                     </span>
                 </div>
 
-            </div>  
-    
+            </div>
+
         </div>
+
     </div>
 </body>
 </html>
