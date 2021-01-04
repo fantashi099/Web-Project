@@ -48,51 +48,203 @@
         <p  style="font-weight: 100px; text-align: center; font-size: 60px;">YOUR BOOKING</p>
     </div>
     <br><br>
-    <div style="padding-left: 72rem;">
-        <button type="button" class="btn btn-secondary pb-2 text-uppercase" data-toggle="modal"
-              data-target="#servicesmodal"><a href="/customer-info" style="text-decoration: none; color: white;">THANH TOÁN</a> </button>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 color-border" style="padding-bottom: 30px; padding-top: 20px;">
-                <div class="image">
-                    <img ng-src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg" src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg">
-                </div>
-                <div class="content">
-                    <p style="font-weight:bolder; margin-bottom: 3px;">Phòng Deluxe King</p>
-                    <p style="font-size: 12px;margin-bottom: 3px;">Với phòng Deluxe King quý khách sẽ được thưởng thức trọn vẹn vẻ đẹp ấn tượng của thành phố ngay trong phòng ngủ của mình. Quý khách sẽ tận hưởng được cảm giác sang trọng, ấm cúng trong lối thiết kế phòng độc đáo với 1 giường King và các thiết bị nội thất hiện đại.</p>
-                </div>
-                <div class="icons">
-                    <i class="fas fa-wifi" style="font-size: 12px; padding-right: 0px; color: gray;"></i>
-                    <i class="fas fa-tv"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
-                    <i class="fas fa-shower"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
-                </div>
-                <div class="content">
-                    <span style="font-size: 12px;"><strong>Kích thước giường:</strong>1 giường king size <strong>Diện tích phòng:</strong>   37 m2</span>
-                    <br>
-                    <br>
-                    <span style="font-size: 12px;">Chính sách hủy linh hoạt  <i style="padding-left: 10rem;" class="fad fa-user"></i><i style="padding-right: 6rem;" class="fad fa-user"></i> <span style="font-size: 18px;">đ 2.800.000 <span style="font-size: 10px;">/1 đêm</span></span>
-                    <div class="form-group" style="width: 7rem;height: 0.5rem;">
-                        <input type="hidden" name="check_in" value="<%= checkIn %>">
-                        <input type="hidden" name="check_out" value="<%= checkOut %>">
-                        <input type="hidden" name="total_person" value="<%= totalPerson %>">
-                        <input type="hidden" name="total_children" value="<%= totalChildren %>">
-                        <select class="form-control" name="DeluxeKing" style="font-size: 11px;height: 28.738636px;">
-                          <option value="0">0 Giường</option>
-                          <option value="1">1 Giường</option>
-                          <option value="2">2 Giường</option>
-                        </select>
+
+    <form action="/book" method="post" onchange="setPrice(this);">
+
+      <div style="padding-left: 62rem;">
+          <p style="display: inline-block;">Tổng cộng: <span id="price-book">0</span> cho <span id="stay-night"><%= stayNight %></span> đêm</p>
+          <button type="submit" class="btn btn-secondary pb-2 text-uppercase">THANH TOÁN</button>
+      </div>
+      <br>
+      <div class="container">
+          <div class="row">
+              <div class="col-12 color-border" style="padding-bottom: 30px; padding-top: 20px;">
+                  <div class="image">
+                      <img ng-src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg" src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg">
+                  </div>
+                  <div class="content">
+                      <p style="font-weight:bolder; margin-bottom: 3px;">Phòng Presidential Suite</p>
+                      <p style="font-size: 12px;margin-bottom: 3px;">Với phòng Presidential Suite quý khách sẽ được thưởng thức trọn vẹn vẻ đẹp ấn tượng của thành phố ngay trong phòng ngủ của mình. Quý khách sẽ tận hưởng được cảm giác sang trọng, ấm cúng trong lối thiết kế phòng độc đáo với 1 giường King và các thiết bị nội thất hiện đại.</p>
+                  </div>
+                  <div class="icons">
+                      <i class="fas fa-wifi" style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                      <i class="fas fa-tv"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                      <i class="fas fa-shower"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                  </div>
+                  <div class="content">
+                      <span style="font-size: 12px;"><strong>Kích thước giường:</strong>1 giường king size <strong>Diện tích phòng:</strong>   37 m2</span>
+                      <br>
+                      <br>
+                      <span style="font-size: 12px;">Chính sách hủy linh hoạt  <i style="padding-left: 10rem;" class="fad fa-user"></i><i style="padding-right: 6rem;" class="fad fa-user"></i> <span style="font-size: 18px;">đ 2.800.000 <span style="font-size: 10px;">/1 đêm</span></span>
+                      <div class="form-group">
+                          <input type="hidden" name="check_in" value="<%= checkIn %>">
+                          <input type="hidden" name="check_out" value="<%= checkOut %>">
+                          <input type="hidden" name="total_person" value="<%= totalPerson %>">
+                          <input type="hidden" name="total_children" value="<%= totalChildren %>">
+                          <input type="hidden" name="total_price" id="price-input" value="0">
+                          <select class="form-control" id="Presidential-room" onchange="Pres();" name="Presidential" style="font-size: 11px;height: 28.738636px;">
+                            <option value="0">0 Giường</option>
+                            <option value="1">1 Giường</option>
+                            <option value="2">2 Giường</option>
+                          </select>
+                        </div>
+                      <br>
+                          Bữa sáng đã bao gồm
+                      </span>
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
+      <div class="container" style="padding-top: 2rem;">
+          <div class="row">
+              <div class="col-12 color-border" style="padding-bottom: 30px; padding-top: 20px;">
+                  <div class="image">
+                      <img ng-src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg" src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg">
+                  </div>
+                  <div class="content">
+                      <p style="font-weight:bolder; margin-bottom: 3px;">Phòng Excutive Suite</p>
+                      <p style="font-size: 12px;margin-bottom: 3px;">Với phòng Excutive Suite quý khách sẽ được thưởng thức trọn vẹn vẻ đẹp ấn tượng của thành phố ngay trong phòng ngủ của mình. Quý khách sẽ tận hưởng được cảm giác sang trọng, ấm cúng trong lối thiết kế phòng độc đáo với 1 giường King và các thiết bị nội thất hiện đại.</p>
+                  </div>
+                  <div class="icons">
+                      <i class="fas fa-wifi" style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                      <i class="fas fa-tv"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                      <i class="fas fa-shower"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                  </div>
+                  <div class="content">
+                      <span style="font-size: 12px;"><strong>Kích thước giường:</strong>1 giường king size <strong>Diện tích phòng:</strong>   37 m2</span>
+                      <br>
+                      <br>
+                      <span style="font-size: 12px;">Chính sách hủy linh hoạt  <i style="padding-left: 10rem;" class="fad fa-user"></i><i style="padding-right: 6rem;" class="fad fa-user"></i> <span style="font-size: 18px;">đ 2.800.000 <span style="font-size: 10px;">/1 đêm</span></span>
+                      <div class="form-group">
+                          <select class="form-control" id="Excutive-room" onchange="Exc();" name="Excutive" style="font-size: 11px;height: 28.738636px;">
+                            <option value="0">0 Giường</option>
+                            <option value="1">1 Giường</option>
+                            <option value="2">2 Giường</option>
+                          </select>
+                        </div>
+                      <br>
+                          Bữa sáng đã bao gồm
+                      </span>
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
+          <div class="container" style="padding-top: 2rem;">
+              <div class="row">
+                  <div class="col-12 color-border" style="padding-bottom: 30px; padding-top: 20px;">
+                      <div class="image">
+                          <img ng-src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg" src="https://new-hls.s3.amazonaws.com/hbe/data/e4596cad-e584-1574676170-4b2d-aa2a-f6d346e7d981/gallery/room/thumbs/sm_thumb_tre_4749_1574840080.jpg">
                       </div>
-                    <br>
-                        Bữa sáng đã bao gồm
-                    </span>
-                </div>
+                      <div class="content">
+                          <p style="font-weight:bolder; margin-bottom: 3px;">Phòng Deluxe Room</p>
+                          <p style="font-size: 12px;margin-bottom: 3px;">Với phòng Deluxe Room quý khách sẽ được thưởng thức trọn vẹn vẻ đẹp ấn tượng của thành phố ngay trong phòng ngủ của mình. Quý khách sẽ tận hưởng được cảm giác sang trọng, ấm cúng trong lối thiết kế phòng độc đáo với 1 giường King và các thiết bị nội thất hiện đại.</p>
+                      </div>
+                      <div class="icons">
+                          <i class="fas fa-wifi" style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                          <i class="fas fa-tv"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                          <i class="fas fa-shower"style="font-size: 12px; padding-right: 0px; color: gray;"></i>
+                      </div>
+                      <div class="content">
+                          <span style="font-size: 12px;"><strong>Kích thước giường:</strong>1 giường king size <strong>Diện tích phòng:</strong>   37 m2</span>
+                          <br>
+                          <br>
+                          <span style="font-size: 12px;">Chính sách hủy linh hoạt  <i style="padding-left: 10rem;" class="fad fa-user"></i><i style="padding-right: 6rem;" class="fad fa-user"></i> <span style="font-size: 18px;">đ 2.800.000 <span style="font-size: 10px;">/1 đêm</span></span>
+                          <div class="form-group">
+                              <select class="form-control" id="Deluxe-room" onchange="Delu();" name="Deluxe" style="font-size: 11px;height: 28.738636px;">
+                                <option value="0">0 Giường</option>
+                                <option value="1">1 Giường</option>
+                                <option value="2">2 Giường</option>
+                              </select>
+                            </div>
+                          <br>
+                              Bữa sáng đã bao gồm
+                          </span>
+                      </div>
 
-            </div>
+                  </div>
 
-        </div>
+              </div>
 
-    </div>
+          </div>
+    </form>
+    <script type="text/javascript">
+
+      // Booking Price
+      let totalPrice = document.getElementById('price-book');
+      let price_input = document.getElementById('price-input');
+      let pricePres = 0, priceExc = 0, priceDelu = 0;
+
+      function Delu(){
+        let selectBox = document.getElementById('Deluxe-room');
+        var value = selectBox.options[selectBox.selectedIndex].value;
+        if (value === 0) {
+          priceDelu = 0;
+        } else if (value === 1) {
+          priceDelu = 2800000;
+        } else {
+          priceDelu = 3200000;
+        }
+      }
+
+      function Exc(){
+        let selectBox = document.getElementById('Excutive-room');
+        var value = selectBox.options[selectBox.selectedIndex].value;
+        if (value === 0) {
+          priceDelu = 0;
+        } else if (value === 1) {
+          priceExc = 5000000;
+        } else {
+          priceExc = 10000000;
+        }
+      }
+
+      function Pres(){
+        let selectBox = document.getElementById('Presidential-room');
+        var value = selectBox.options[selectBox.selectedIndex].value;
+        if (value === 0) {
+          priceDelu = 0;
+        } else if (value === 1) {
+          pricePres = 20000000;
+        } else {
+          pricePres = 30000000;
+        }
+      }
+
+      function setPrice(obj){
+        var totalNight = Number(document.getElementById('stay-night').innerHTML);
+        var total = (priceDelu + priceExc + pricePres) * totalNight;
+
+        totalPrice.setAttribute('value',total);
+        totalPrice.innerHTML = formatMoney(total);
+        price_input.setAttribute('value',total);
+
+      }
+
+      function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
+        try {
+          decimalCount = Math.abs(decimalCount);
+          decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+          const negativeSign = amount < 0 ? "-" : "";
+
+          let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+          let j = (i.length > 3) ? i.length % 3 : 0;
+
+          return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+        } catch (e) {
+          console.log(e)
+        }
+      };
+
+    </script>
+
 </body>
 </html>

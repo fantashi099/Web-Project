@@ -70,102 +70,109 @@
                 <b>Guest Information</b>
             </div>
         </div>
-        <div class="row" style="padding-left: 1rem;">
-            <div class="col-7" style="background-color: #F4F2ED; padding-top: 1rem;padding-left:1.5rem;">
-                <span><b>Frist Name</b> <b style="padding-left: 11.5rem;">Last name</b></span> 
-                <div class="form-group left">
-                    <input class="form-control h-2" type="text">
-                </div> <!-- form-group -->
-                <div class="form-group right">
-                    <input class="form-control h-2" type="text">
-                </div> <!-- form-group --> 
-                <br> 
-                <b>Email Address</b>
-                <div class="form-group">
-                    <input class="form-control h-2" type="text">
-                  </div> <!-- form-group -->  
 
-                <b>Country/Region</b>
-                <div class="form-group">
-                    <input class="form-control h-2" type="text">
+        <form class="" action="/payment-info" method="post">
+          <div class="row" style="padding-left: 1rem;">
+              <div class="col-7" style="background-color: #F4F2ED; padding-top: 1rem;padding-left:1.5rem;">
+                <input type="hidden" name="check_in" value="<%= checkIn %>">
+                <input type="hidden" name="check_out" value="<%= checkOut %>">
+                <input type="hidden" name="total_person" value="<%= totalPerson %>">
+                <input type="hidden" name="total_children" value="<%= totalChildren %>">
+                <input type="hidden" name="Presidential" value="<%= Presidential %>">
+                <input type="hidden" name="Excutive" value="<%= Excutive %>">
+                <input type="hidden" name="Deluxe" value="<%= Deluxe %>">
+                <input type="hidden" name="total_night" value="<%= stayNight %>">
+                <input type="hidden" name="total_price" value="<%= totalPrice %>">
+                <input type="hidden" name="status" value="Booking">
+                  <span><b>Frist Name</b> <b style="padding-left: 11.5rem;">Last name</b></span>
+                  <div class="form-group left">
+                      <input name="fisrtName" class="form-control h-2" type="text" required>
                   </div> <!-- form-group -->
-                <b>Address</b>
-                <div class="form-group">
-                    <input class="form-control h-2" type="text">
+                  <div class="form-group right">
+                      <input name="lastName" class="form-control h-2" type="text" required>
                   </div> <!-- form-group -->
-                <b>Phone Number</b>
-                <div class="form-group">
-                    <input class="form-control h-2" type="text">
-                  </div> <!-- form-group -->
-                <b>Yêu cầu thêm (tùy chọn)</b>
-                <div class="form-group">
-                    <input class="form-control" type="text" style="height: 5rem;">
-                  </div> <!-- form-group -->
-                          
-            </div>
-            
-            <div class="col-md-5" style="padding-left:1.5rem;padding-right: 0px; padding-top: 1rem;">
-                <div class="temp" style="background-color: #D8D3CB;padding-left:1.5rem;padding-right:1rem;">
-                    <b>Payment Information</b>
-                    <br> <br>
-                    <p style="font-size: 15px; font-weight:bold; color: grey;">Reserve with payment card. <br>
-                        Your room will be held until your arrival on the day of your check-in.</p>
-                    <img src="images/payment.jpg" alt="">
-                    <br><br>
-                    <p style="font-size: 15px;margin-bottom: 0.5rem;font-weight:bold; color: grey;">All fields are required. <br>
-                    Payment Card Number </p>
-                    <div class="form-group">
-                        <input class="form-control h-2" type="text">
-                      </div> <!-- form-group -->
-                    <p style="font-size: 15px;margin-bottom: 0.5rem;font-weight:bold; color: grey;">Expiration Date</p>
-                    <div class="form-group left">
-                        <select class="form-control h-2" placeholder="MM">
-                          <option >01 January</option>
-                          <option>02 February</option>
-                          <option>03 March</option>
-                          <option>04 April</option>
-                          <option>05 May</option>
-                          <option>06 June</option>
-                          <option>07 July</option>
-                          <option>08 August</option>
-                          <option>09 September</option>
-                          <option>10 October</option>
-                          <option>11 November</option>
-                          <option>12 December</option>
-                        </select>
-                    </div> 
-                    <div class="form-group right">
-                        <select class="form-control h-2" placeholder="YYY">
-                          <option >2020</option>
-                          <option>2021</option>
-                          <option>2023</option>
-                          <option>2024</option>
-                          <option>2025</option>
-                          <option>2026</option>
-                          <option>2027</option>
-                          <option>2028</option>
-                          <option>2029</option>
-                          <option>2030</option>
-                        </select>
-                    </div> 
-                    <br><br>
-                </div>
-                <div style="background-color: white;padding-left:1.5rem;padding-right:1rem;">
-                    <p></p>
-                </div>
-                <div style="background-color: #D8D3CB;padding-left:1.5rem;padding-right:1rem;">
-                    <form action="/action_page.php" style="padding-top:1rem;padding-bottom:1rem;">
-                        <input type="checkbox" id="vehicle1" name="check_pay">
-                        <label for="check_pay" style="font-size: 15px;">I have read and accept the Terms of Use </label><br>
-                      </form>
-                </div>
-                <button type="button" class="btn btn-light" style="background-color:#8E731B;width: 100%;">BOOK RESERVATION</button>
-            </div>
-            
-        </div>
+                  <br>
+                  <b>Email Address</b>
+                  <div class="form-group">
+                      <input name="email" class="form-control h-2" type="text">
+                    </div> <!-- form-group -->
+
+                  <b>Phone Number</b>
+                  <div class="form-group">
+                      <input name="phone" class="form-control h-2" type="text" required>
+                    </div> <!-- form-group -->
+                  <b>Yêu cầu thêm (tùy chọn)</b>
+                  <div class="form-group">
+                      <input name="option" class="form-control" type="text" style="height: 5rem;">
+                    </div> <!-- form-group -->
+
+              </div>
+
+              <div class="col-md-5" style="padding-left:1.5rem;padding-right: 0px; padding-top: 1rem;">
+                  <div class="temp" style="background-color: #D8D3CB;padding-left:1.5rem;padding-right:1rem;">
+                      <b>Payment Information</b>
+                      <br> <br>
+                      <p style="font-size: 15px; font-weight:bold; color: grey;">Reserve with payment card. <br>
+                          Your room will be held until your arrival on the day of your check-in.</p>
+                      <img src="images/payment.jpg" alt="">
+                      <br><br>
+                      <p style="font-size: 15px;margin-bottom: 0.5rem;font-weight:bold; color: grey;">All fields are required. <br>
+                      Payment Card Number </p>
+                      <div class="form-group">
+                          <input class="form-control h-2" type="text">
+                        </div> <!-- form-group -->
+                      <p style="font-size: 15px;margin-bottom: 0.5rem;font-weight:bold; color: grey;">Expiration Date</p>
+                      <div class="form-group left">
+                          <select class="form-control h-2" placeholder="MM">
+                            <option >01 January</option>
+                            <option>02 February</option>
+                            <option>03 March</option>
+                            <option>04 April</option>
+                            <option>05 May</option>
+                            <option>06 June</option>
+                            <option>07 July</option>
+                            <option>08 August</option>
+                            <option>09 September</option>
+                            <option>10 October</option>
+                            <option>11 November</option>
+                            <option>12 December</option>
+                          </select>
+                      </div>
+                      <div class="form-group right">
+                          <select class="form-control h-2" placeholder="YYY">
+                            <option >2020</option>
+                            <option>2021</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2027</option>
+                            <option>2028</option>
+                            <option>2029</option>
+                            <option>2030</option>
+                          </select>
+                      </div>
+                      <br><br>
+                  </div>
+                  <div style="background-color: white;padding-left:1.5rem;padding-right:1rem;">
+                      <p></p>
+                  </div>
+                  <div style="background-color: #D8D3CB;padding-left:1.5rem;padding-right:1rem;">
+                      <form action="/action_page.php" style="padding-top:1rem;padding-bottom:1rem;">
+                          <input type="checkbox" id="vehicle1" name="check_pay">
+                          <label for="check_pay" style="font-size: 15px;">I have read and accept the Terms of Use </label><br>
+                        </form>
+                  </div>
+                  <button type="submit" class="btn btn-light" style="background-color:#8E731B;width: 100%;">BOOK RESERVATION</button>
+              </div>
+
+          </div>
+        </form>
+
+
     </div>
     <br><br>
 
-    
+
 </body>
 </html>

@@ -3,12 +3,12 @@
 // Check in === current day, check out === the next day for booking default
 let today = new Date();
 
-year = today.getFullYear();
-month = today.getMonth() + 1;
-day = today.getDate();
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+let day = today.getDate();
 
-current = String(year) + '-' + String(month) + '-' + String(day);
-next = String(year) + '-' + String(month) + '-' + String(day+1);
+let current = String(year) + '-' + String(month) + '-' + String(day);
+let next = String(year) + '-' + String(month) + '-' + String(day+1);
 
 $('#check-in').val(current);
 $('#check-out').val(next);

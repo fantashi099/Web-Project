@@ -10,7 +10,32 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-// mongoose.connect('mongodb://localhost:27017/')
+mongoose.connect('mongodb://localhost:27017/bookDB', {useNewUrlParser: true, useUnifiedTopology:true,useFindAndModify: false});
+
+const infoSchema = new mongoose.Schema({
+  checkIn: {
+    type: Date,
+    default: Date.now
+  },
+  checkOut: Date,
+  totalPerson: [{
+    adults: Number,
+    childrens: Number
+  }],
+  totalNight: Number,
+  name: String,
+  email: String,
+  status: String,
+  phone: Number,
+  room: [{
+    Presidential: Number,
+    Excutive: Number,
+    Deluxe: Number,
+    price: Number,
+  }]
+});
+
+const Info = mongoose.model('Info', infoSchema);
 
 app.get('/', function(req,res){
   res.render('home');
@@ -36,25 +61,74 @@ app.get('/restaurant-bar',function(req,res){
   res.render('restaurant-bar');
 });
 
-app.get('/services-other',function(req,res){
-  res.render('services-other');
-});
-
-app.get('/customer-info',function(req,res){
-  res.render('customer-info');
-});
-
 app.post('/', function(req,res) {
 
   const check_in = req.body.check_in;
   const check_out = req.body.check_out;
+  const night_stay = Math.abs( new Date(check_out) - new Date(check_in))/86400000;
   const total_person = req.body.person;
   const total_children = req.body.children;
 
-  res.render('booking', {checkIn: check_in, checkOut: check_out, totalPerson: total_person, totalChildren: total_children});
+  res.render('booking', {checkIn: check_in, checkOut: check_out,stayNight: night_stay ,totalPerson: total_person, totalChildren: total_children});
 });
 
-// app.post('/')
+app.post('/book', function(req,res){
+
+  const check_in = req.body.check_in;
+  const check_out = req.body.check_out;
+  const night_stay = Math.abs( new Date(check_out) - new Date(check_in))/86400000;
+  const total_person = req.body.total_person;
+  const total_children = req.body.total_children;
+  const total_price = req.body.total_price;
+  const presidential = req.body.Presidential;
+  const excutive = req.body.Excutive;
+  const deluxe = req.body.Deluxe;
+
+  var passObject = {
+    checkIn: check_in,
+    checkOut: check_out,
+    stayNight: night_stay,
+    totalPerson: total_person,
+    totalChildren: total_children,
+    totalPrice: total_price,
+    Presidential: presidential,
+    Excutive: excutive,
+    Deluxe: deluxe
+  }
+
+  res.render('customer-info', passObject);
+
+});
+
+app.post('/payment-info', function(req,res){
+  const Room = [{
+    Presidential: req.body.Presidential,
+    Excutive: req.body.Excutive,
+    Deluxe: req.body.Deluxe,
+    price: req.body.total_price
+  }];
+
+  const totalPerson = [{
+    adults: req.body.total_person,
+    childrens: req.body.total_children
+  }]
+
+  const bookItem = new Info({
+    checkIn: req.body.check_in,
+    checkOut: req.body.check_out,
+    totalPerson: totalPerson,
+    totalNight: req.body.total_night,
+    name: req.body.fisrtName + " " + req.body.lastName,
+    email: req.body.email,
+    status: req.body.status,
+    phone: req.body.phone,
+    room: Room
+  });
+
+    bookItem.save();
+    res.redirect('/');
+
+});
 
 app.post('/mailchimp', function(req,res){
   const email = {

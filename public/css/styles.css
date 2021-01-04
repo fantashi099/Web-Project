@@ -44,9 +44,9 @@ background-color: rgb(245, 245, 245);
 }
 
 .zoom:hover {
-  -ms-transform: scale(1.007); 
-  -webkit-transform: scale(1.007); 
-  transform: scale(1.007); 
+  -ms-transform: scale(1.007);
+  -webkit-transform: scale(1.007);
+  transform: scale(1.007);
 }
 .text {
 
@@ -79,7 +79,7 @@ background-color: rgb(245, 245, 245);
 .effect-image-1:hover .overlay-xs-1{
   opacity: 1;
   visibility: visible;
-  display: block;	
+  display: block;
 }
 .col-7 .left{
   width: 47%;
