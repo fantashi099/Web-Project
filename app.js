@@ -36,6 +36,10 @@ app.get('/restaurant-bar',function(req,res){
   res.render('restaurant-bar');
 });
 
+app.get('/admin',function(req,res){
+  res.render('admin');
+});
+
 app.get('/services-other',function(req,res){
   res.render('services-other');
 });
@@ -46,6 +50,14 @@ app.get('/booking',function(req,res){
 
 app.get('/customer-info',function(req,res){
   res.render('customer-info');
+});
+
+app.get('/sign-in',function(req,res){
+  res.render('sign-in');
+});
+
+app.get('/register',function(req,res){
+  res.render('register');
 });
 
 app.post('/mail', function(req,res){
