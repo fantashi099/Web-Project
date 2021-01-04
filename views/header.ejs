@@ -83,39 +83,39 @@
 
           <h2 class="modal-title text-center pb-4">Đặt Ngay</h2>
 
-          <form>
+          <form action="/" method="POST">
 
             <fieldset class="form-group">
 
               <div class="form-group form-row">
                 <div class="form-group col">
                   <label class="col-form-label" for="check-in">NGÀY ĐẾN</label>
-                  <input class="form-control" type="date" id="check-in">
+                  <input name="check_in" class="form-control" type="date" id="check-in" required>
                 </div><!-- form-group -->
 
                 <div class="form-group col">
                   <label class="col-form-label" for="check-out">NGÀY ĐI</label>
-                  <input class="form-control" type="date" id="check-out">
+                  <input name="check_out" class="form-control" type="date" id="check-out" required>
                 </div><!-- form-group -->
               </div><!-- form-group -->
 
               <div class="form-group form-row" style="margin-bottom: 5px;">
                 <div class="form-group col" style="margin-bottom: 0px;">
                   <label class="col-form-label"> NGƯỜI LỚN</label>
-                  <select class="form-control" required>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                  <select name="person" class="form-control" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                   </select>
                 </div><!-- form-group -->
 
                 <div class="form-group col" style="margin-bottom: 0px;">
                   <label class="col-form-label">TRẺ EM</label>
-                  <select class="form-control">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
+                  <select name="children" class="form-control">
+                    <option value="0">0</option>
+                    <option value="1">Dưới 3 trẻ</option>
+                    <option value="2">Từ 3 trẻ</option>
                   </select>
                 </div><!-- form-group -->
               </div><!-- form-group -->
@@ -133,7 +133,7 @@
 
               <div class="form-group row pt-5">
                 <div class="col-auto">
-                  <button class="btn btn-primary" type="submit"><a href="/booking" style="color: white; text-decoration: none;">Submit</a></button>
+                  <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
               </div>
 
