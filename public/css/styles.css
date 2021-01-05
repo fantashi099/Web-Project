@@ -57,12 +57,8 @@ background-color: rgb(245, 245, 245);
   transform: translate(-50%, -50%);
 }
 .dropbtn {
-<<<<<<< HEAD
-  padding: 16px;
-  font-size: 16px;
-=======
   padding: 10px;
->>>>>>> 9b93da9d3509173ce574c1f2a3e9f962667dd638
+  font-size: 16px;
   border: none;
 }
 
@@ -76,14 +72,15 @@ background-color: rgb(245, 245, 245);
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  margin-top: 2rem;
 }
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 12px 12px;
   text-decoration: none;
   display: block;
 }
