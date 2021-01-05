@@ -1,0 +1,107 @@
+<%- include('header') -%>
+
+<!-- Header -->
+
+<div class="overlay"></div>
+<header class="masthead contact-masthead mb-5">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light text-light">LIÊN HỆ</h1>
+        <p class="lead text-light" style="text-align: center;">Với chúng tôi</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- End of Header -->
+<!-- Main -->
+
+<div class="container">
+
+  <div class="row">
+
+    <!-- Contact Form -->
+
+    <div class="col-md-8 py-5">
+      <div class="container">
+
+        <section class="mb-5">
+
+          <form action="/contact" method="POST">
+
+            <fieldset class="form-group">
+
+              <legend class="pb-2">Liên Hệ</legend>
+
+              <div class="form-group">
+                <label class="form-control-label" for="ownername">Name:</label>
+                <input class="form-control" type="text" id="ownername" placeholder="Your name">
+              </div> <!-- form-group -->
+
+              <div class="form-group">
+                <label class="form-control-label" for="owneremail">Email address:</label>
+                <input class="form-control" type="email" id="owneremail" aria-describedby="email" placeholder="Your email" required>
+              </div> <!-- form-group -->
+
+              <div class="form-group">
+                <label class="form-control-label" for="subject">Subject:</label>
+                <select class="form-control" id="subject">
+                  <option>Tuyển dụng</option>
+                  <option>Hỏi đáp</option>
+                </select>
+              </div> <!-- form-group -->
+
+              <div class="form-group">
+                <label class="form-control-label" for="yourmessage">Message:</label>
+                <textarea class="form-control" id="yourmessage" rows="3" placeholder="Enter your message" required></textarea>
+              </div> <!-- form-group -->
+
+              <button class="btn btn-primary" type="submit">Submit</button>
+
+            </fieldset>
+
+          </form>
+
+        </section>
+
+      </div> <!-- container -->
+    </div> <!-- col-md-8 -->
+
+    <!-- End of Contact Form -->
+
+    <!-- Sidebar -->
+
+    <div class="col-md-4 pt-sm-0 pt-md-5">
+      <div class="container pb-5 pl-5">
+        <div class="row">
+
+          <h3 class="col-sm-12 pb-2 pl-0"> Địa Chỉ </h3>
+
+          <div>
+            <p class="mb-0"><i class="fa fa-map-marker-alt text-primary pr-2"></i> Số nhà 25, tổ dân phố 21, Phường Him Lam
+              Thành phố Điện Biên Phủ, tỉnh Điện Biên</p>
+            <p><i class="fa fa-phone text-primary pr-2"></i>Phone: +84-243-8222-333</p>
+            <p><i class="fa fa-envelope text-primary pr-2"></i>Email: info@royalhotel.vn</p>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Sidebar -->
+
+  </div> <!-- row -->
+
+</div> <!-- container -->
+
+<!-- End of Main -->
+
+
+<script type="text/javascript">
+  $('#nav-home').removeClass('active');
+  $('#nav-contact').addClass('active');
+</script>
+
+<%- include('footer') -%>
