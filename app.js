@@ -28,7 +28,7 @@ mongoose.connect('mongodb://localhost:27017/bookDB', {useNewUrlParser: true, use
 mongoose.set('useCreateIndex', true);
 
 const userSchema = new mongoose.Schema({
-  username: String,
+  email: String,
   password: String,
   name: String,
   phone: Number
@@ -38,9 +38,7 @@ userSchema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model('User', userSchema);
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-  },User.authenticate()));
+passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -67,6 +65,11 @@ const infoSchema = new mongoose.Schema({
     price: Number,
   }]
 });
+
+const listSchema = new mongoose.Schema({
+  name: String,
+  items: [infoSchema]
+})
 
 const Info = mongoose.model('Info', infoSchema);
 
@@ -189,40 +192,48 @@ app.post('/payment-info', function(req,res){
 
 });
 
-app.post('/register', function(req,res){
+app.post('/register', function(req,res, next){
 
   User.register({username: req.body.email, name: req.body.name, phone: req.body.phone}, req.body.password, function(err,user){
     if (err) {
       console.log(err);
       res.redirect('/register');
-    } else {
-      passport.authenticate('local')(req, res, function(err) {
-        if (err) console.log(err);
-        else {
-          res.redirect('/admin');
-        }
-      });
     }
-  });
-});
 
-app.post('/sign-in', function(req,res) {
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password
+    next();
   });
+}, passport.authenticate('local', {
+  successRedirect: '/admin',
+  failureRedirect: '/sign-in'
+}));
 
-  req.login(user, function(err){
-    if (err) {
-      console.log(err);
-    } else {
-      passport.authenticate('local')(req,res, function(){
-        res.redirect('/admin');
-      });
-    }
-  });
+app.post('/sign-in', function(req,res, next) {
 
-});
+  if (req.body) {
+    const user = new User({
+      username: req.body.username,
+      password: req.body.password,
+    });
+
+    req.login(user, function(err){
+      if (err) {
+        console.log(err);
+        res.redirect('/sign-in');
+      } else {
+        next();
+      }
+    });
+  }}, passport.authenticate('local', {
+    successRedirect: '/admin',
+    failureRedirect: '/sign-in'
+}));
+
+// app.post('/sign-in',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // res.redirect('/users/' + req.user.username);
+//     res.redirect('/admin');
+// });
 
 
 app.post('/mailchimp', function(req,res){
