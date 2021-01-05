@@ -82,6 +82,10 @@ app.get('/rooms', function(req,res){
   res.render('rooms');
 });
 
+app.get('/profile', function(req,res){
+  res.render('profile');
+});
+
 app.get('/services', function(req,res){
   res.render('services');
 });
@@ -106,6 +110,7 @@ app.get('/logout', function(req,res){
   req.logout();
   res.redirect('/sign-in');
 });
+
 
 app.get('/admin', function(req,res){
   if (req.isAuthenticated()){
