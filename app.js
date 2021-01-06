@@ -63,13 +63,10 @@ const infoSchema = new mongoose.Schema({
     Excutive: Number,
     Deluxe: Number,
     price: Number,
-  }]
+  }],
+  status: String
 });
 
-const listSchema = new mongoose.Schema({
-  name: String,
-  items: [infoSchema]
-})
 
 const Info = mongoose.model('Info', infoSchema);
 
@@ -115,9 +112,17 @@ app.get('/logout', function(req,res){
 });
 
 
-app.get('/admin', function(req,res){
+app.get('/dashboard', function(req,res){
   if (req.isAuthenticated()){
-    res.render('admin');
+    if (req.user.username === 'admin@uit') {
+      Info.find({}, function(err, InfoFound){
+        if (!err) {
+          res.render('admin', { listInfo: InfoFound });
+        } else console.log(errr);
+      })
+    } else {
+      res.render('profile');
+    }
   } else {
     res.redirect('/sign-in');
   }
@@ -184,7 +189,8 @@ app.post('/payment-info', function(req,res){
     email: req.body.email,
     status: req.body.status,
     phone: req.body.phone,
-    room: Room
+    room: Room,
+    status: "onPay"
   });
 
     bookItem.save();
@@ -203,7 +209,7 @@ app.post('/register', function(req,res, next){
     next();
   });
 }, passport.authenticate('local', {
-  successRedirect: '/admin',
+  successRedirect: '/dashboard',
   failureRedirect: '/sign-in'
 }));
 
@@ -224,7 +230,7 @@ app.post('/sign-in', function(req,res, next) {
       }
     });
   }}, passport.authenticate('local', {
-    successRedirect: '/admin',
+    successRedirect: '/dashboard',
     failureRedirect: '/sign-in'
 }));
 
