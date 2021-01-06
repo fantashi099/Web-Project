@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300&display=swap" rel="stylesheet">
+  <style media="screen">
+
+  </style>
    <!-- favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -40,106 +43,150 @@
      <br><br>
      <h2 style="margin-left: 3REM;">DASHBOARD</h2>
      <br>
-     <table class="table" style="margin-left: 3REM;" >
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Room</th>
-            <th scope="col">Check In</th>
-            <th scope="col">Check Out</th>
-            <th scope="col">Total Night</th>
-            <th scope="col">Total Person</th>
-            <th scope="col">Total price</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
+     <div id="table-wrapper">
+      <div id="table-scroll">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Room</th>
+                <th scope="col">Check In</th>
+                <th scope="col">Check Out</th>
+                <th scope="col">Total Night</th>
+                <th scope="col">Total Person</th>
+                <th scope="col">Total price</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
 
-            <td>Nguyễn Hữu doanh</td>
-            <td>huudoanh123qn@gmail.com</td>
-            <td>0915140026</td>
-            <td>12</td>
-            <td>check-in</td>
-            <td>Check Out</td>
-            <td>01</td>
-            <td>01</td>
-            <td>10000000</td>
-            <td>
-                <nav class="navbar-expand-md">
-                    <div class="container ">
-                      <div class="collapse navbar-collapse" >
-                        <div style="border: black; border-style: ridge; width: 1.5rem; height: 1.5rem;;"><p><i class="fas fa-check"></i></p></div>
-                        <div style="border: black; border-style: ridge; width: 1.5rem; height: 1.5rem;margin-left: 0.3rem;"><p><i class="fas fa-check"></i></p></div>
-                    </div>
-                </div> <!-- container -->
-              </nav> <!-- navbar -->
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+              <% var count = 1; %>
+              <% var today_month = 1; %>
+              <% var today_day = 1; %>
+              <% var today_year = 1; %>
 
-      <h2 class="text-uppercase" style="margin-left: 3rem;">Thống kê doanh thu 1 ngày</h2>
+              <% var total_price_day = 0; %>
+              <% var total_price_month = 0; %>
+              <% var total_price_year = 0; %>
+              <% var total_price = 0; %>
+              <% var today = new Date(); %>
+
+              <% listInfo.slice().reverse().forEach(function(info){ %>
+                <tr>
+                  <% if (today.getFullYear() ===  info.checkIn.getFullYear()) total_price_year += info.room[0].price %>
+                  <% if (today.getMonth() ===  info.checkIn.getMonth()) total_price_month += info.room[0].price %>
+                  <% if (today.getDate() ===  info.checkIn.getDate()) total_price_day += info.room[0].price %>
+                  <% total_price += info.room[0].price %>
+
+                  <th scope="row"><%= count %></th>
+                  <td><%= info.name %></td>
+                  <td><%= info.email %></td>
+                  <td><%= info.phone %></td>
+                  <td>
+                    <p>Presidential: <%= info.room[0].Presidential %> </p>
+                    <p>Excutive: <%= info.room[0].Excutive %> </p>
+                    <p>Deluxe: <%= info.room[0].Deluxe %> </p>
+                  </td>
+                  <td><%= String(info.checkIn.getDate()) +'/'+ String(info.checkIn.getMonth() + 1) + '/' + String(info.checkIn.getFullYear()) %>  </td>
+                  <td><%= String(info.checkOut.getDate()) +'/'+ String(info.checkOut.getMonth() + 1) + '/' + String(info.checkOut.getFullYear()) %></td>
+                  <td><%= info.totalNight %></td>
+                  <td>
+                    <p>Adults: <%= info.totalPerson[0].adults %> </p>
+                    <p>Childrens: <%= info.totalPerson[0].childrens %> </p>
+                  </td>
+                  <td class="money"><%= info.room[0].price %></td>
+                  <td>
+                      <nav class="navbar-expand-md">
+                          <div class="container ">
+                            <div class="collapse navbar-collapse" >
+                              <div class="status-check"><i class="fas fa-check"></i></div>
+                              <div class="status-check"><i class="fas fa-times"></i></div>
+                          </div>
+                      </div> <!-- container -->
+                    </nav> <!-- navbar -->
+                  </td>
+                </tr>
+                <% count++; %>
+              <% }); %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <h2 class="text-uppercase" style="margin-left: 3rem;">Thống kê doanh</h2>
       <br>
-      <table class="table" style="margin-left: 3REM;" >
+      <table class="table" style="width: 50%;">
         <thead class="thead-dark">
           <tr>
+            <th scope="col">Thống kê</th>
             <th scope="col" style="width:20%">Date</th>
             <th scope="col">Total</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>10/1/2020</td>
-            <td>10000000</td>
+            <td>Trong 1 Ngày</td>
+            <td><%= String(today.getDate()) +'/'+ String(today.getMonth() + 1) + '/' + String(today.getFullYear()) %></td>
+            <td class="money"><%= total_price_day %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td></td>
 
-          </tr>
           <tr>
-            <td></td>
-            <td></td>
-
+            <td>Trong 1 Tháng</td>
+            <td><%= String(today.getMonth() + 1) %></td>
+            <td class="money"><%= total_price_month %></td>
           </tr>
+
+          <tr>
+            <td>Trong 1 Năm</td>
+            <td><%= String(today.getFullYear()) %></td>
+            <td class="money"><%= total_price_year %></td>
+          </tr>
+
+          <tr>
+            <td>Tổng Doanh Thu</td>
+            <td></td>
+            <td class="money"><%= total_price %></td>
+          </tr>
+
         </tbody>
       </table>
      <nav class="navbar-expand-md">
-        <div class="container ">
+       <h2 class="text-uppercase" style="margin-left: 3rem;">Thêm Mã Khuyến Mãi</h2>
+        <div class="container" style="margin-left: 0; margin-bottom: 2rem;">
           <div class="collapse navbar-collapse" >
-            <input type="text" class="form-control" placeholder="Nhập mã" style="width:10rem;height: 3rem; margin-left: -25rem;">
-            <button class="btn btn-primary pb-2 text-uppercase" style="width:10rem;height: 3rem;"> ADD Discount</button>
+            <form action="/add-coupon" method="post">
+              <input type="text" class="form-control" placeholder="Nhập mã" style="width:10rem;height: 3rem;">
+              <button class="btn btn-primary pb-2 text-uppercase" style="width:10rem;height: 3rem;"> ADD Discount</button>
+            </form>
          </div>
         </div> <!-- container -->
       </nav> <!-- navbar -->
+
+      <script type="text/javascript">
+      function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
+        try {
+          decimalCount = Math.abs(decimalCount);
+          decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+          const negativeSign = amount < 0 ? "-" : "";
+
+          let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+          let j = (i.length > 3) ? i.length % 3 : 0;
+
+          return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+        } catch (e) {
+          console.log(e)
+        }
+      };
+
+      var money = document.getElementsByClassName('money');
+      for (let i =0; i< money.length; i++) {
+        money[i].innerHTML = formatMoney(money[i].innerHTML);
+      }
+
+      </script>
 </body>
 </html>
