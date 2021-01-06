@@ -181,7 +181,10 @@ hr.left {
   width: 60px;
   height: 60px;
 }
-
+#hotel-logo1 {
+  width: 150px;
+  height: 150px;
+}
 .services-info {
   color:#fc8621;
 }

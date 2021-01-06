@@ -109,6 +109,10 @@ app.get('/register', function(req,res){
   res.render('register');
 });
 
+app.get('/services-other', function(req,res){
+  res.render('services-other');
+});
+
 app.get('/logout', function(req,res){
   req.logout();
   res.redirect('/sign-in');
