@@ -67,8 +67,21 @@ const infoSchema = new mongoose.Schema({
   status: String
 });
 
+const couponSchema = new mongoose.Schema({
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  coupon: String,
+  status: {
+    type: String,
+    default: "Available"
+  }
+});
 
 const Info = mongoose.model('Info', infoSchema);
+const Coupon = mongoose.model('Coupon', couponSchema);
+
 
 app.get('/', function(req,res){
   res.render('home');
@@ -237,6 +250,15 @@ app.post('/sign-in', function(req,res, next) {
     successRedirect: '/dashboard',
     failureRedirect: '/sign-in'
 }));
+
+app.post('/add-coupon', function(req,res){
+  const couponItem = new Coupon({
+    coupon: req.body.coupon
+  });
+
+  couponItem.save();
+  res.redirect('/dashboard');
+});
 
 // app.post('/sign-in',
 //   passport.authenticate('local'),

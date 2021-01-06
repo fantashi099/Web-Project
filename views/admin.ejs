@@ -14,11 +14,11 @@
   <style media="screen">
 
   </style>
-   <!-- favicon -->
+  <!-- favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
   <!-- <%# Font awesome free 5.15.1 %> -->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title> ROYAL HOTEL </title>
@@ -186,7 +186,13 @@
       for (let i =0; i< money.length; i++) {
         money[i].innerHTML = formatMoney(money[i].innerHTML);
       }
+    };
 
-      </script>
+    var money = document.getElementsByClassName('money');
+    for (let i = 0; i < money.length; i++) {
+      money[i].innerHTML = formatMoney(money[i].innerHTML);
+    }
+  </script>
 </body>
+
 </html>
