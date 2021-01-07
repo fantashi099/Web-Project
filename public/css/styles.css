@@ -372,8 +372,7 @@ hr.left {
 
 /* Status check admin DASHBOARD */
 .status-check {
-  border: #dddddd;
-  border-style: ridge;
+  border: double #dddddd;
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
@@ -387,12 +386,13 @@ hr.left {
   margin-left: 0.3rem;
 }
 
+
 #table-wrapper {
   position:relative;
 }
 #table-scroll {
-  height:10rem;
-  overflow:auto;  
+  height:30rem;
+  overflow:auto;
   margin-top:20px;
 }
 #table-wrapper table {
@@ -403,7 +403,7 @@ hr.left {
   color:black;
 }
 #table-wrapper table thead th .text {
-  position:absolute;   
+  position:absolute;
   top:-20px;
   z-index:2;
   height:20px;
