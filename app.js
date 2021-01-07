@@ -98,10 +98,6 @@ app.get('/rooms', function(req,res){
   res.render('rooms');
 });
 
-app.get('/profile', function(req,res){
-  res.render('profile');
-});
-
 app.get('/services', function(req,res){
   res.render('services');
 });
@@ -179,19 +175,61 @@ app.post('/book', function(req,res){
   const excutive = req.body.Excutive;
   const deluxe = req.body.Deluxe;
 
-  var passObject = {
-    checkIn: check_in,
-    checkOut: check_out,
-    stayNight: night_stay,
-    totalPerson: total_person,
-    totalChildren: total_children,
-    totalPrice: total_price,
-    Presidential: presidential,
-    Excutive: excutive,
-    Deluxe: deluxe
+  var fullname = '';
+  var email = '';
+  var phone = '';
+
+  if (req.isAuthenticated()){
+    var fullname = req.user.name;
+    var email = req.user.username;
+    var phone = req.user.phone;
   }
 
-  res.render('customer-info', passObject);
+  var coupon = '';
+  Coupon.findOne({status: 'Available'}, function(err,couponFound){
+    if (!err) {
+      if (couponFound) {
+        coupon = couponFound.coupon;
+      }
+      var passObject = {
+        checkIn: check_in,
+        checkOut: check_out,
+        stayNight: night_stay,
+        totalPerson: total_person,
+        totalChildren: total_children,
+        totalPrice: total_price,
+        Presidential: presidential,
+        Excutive: excutive,
+        Deluxe: deluxe,
+        fullName: fullname,
+        Email: email,
+        Phone: phone,
+        Coupon: coupon
+      }
+
+      // console.log(passObject);
+      return res.render('customer-info', passObject);
+    } else {
+      var passObject = {
+        checkIn: check_in,
+        checkOut: check_out,
+        stayNight: night_stay,
+        totalPerson: total_person,
+        totalChildren: total_children,
+        totalPrice: total_price,
+        Presidential: presidential,
+        Excutive: excutive,
+        Deluxe: deluxe,
+        fullName: fullname,
+        Email: email,
+        Phone: phone,
+        Coupon: coupon
+      }
+
+      // console.log(passObject);
+      return res.render('customer-info', passObject);
+    }
+  });
 
 });
 
@@ -222,7 +260,7 @@ app.post('/payment-info', function(req,res){
   });
 
     bookItem.save();
-    res.redirect('/');
+    res.render('done',{'name': req.body.fisrtName + " " + req.body.lastName, 'email':req.body.email ,'checkIn': req.body.check_in, 'checkOut':req.body.check_out,'totalNight':req.body.total_night, 'totalPerson': totalPerson, 'room': Room, 'status': "onPay"});
 
 });
 
@@ -300,8 +338,7 @@ app.post('/update-status', function(req,res) {
     )
   }
 
-
-})
+});
 
 app.post('/mailchimp', function(req,res){
   const email = {
