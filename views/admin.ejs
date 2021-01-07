@@ -51,6 +51,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">CMND</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Room</th>
                 <th scope="col">Check In</th>
@@ -84,6 +85,7 @@
                   <th scope="row"><%= count %></th>
                   <td><%= info.name %></td>
                   <td><%= info.email %></td>
+                  <td><%= info.cmnd %></td>
                   <td><%= info.phone %></td>
                   <td>
                     <p>Presidential: <%= info.room[0].Presidential %> </p>
@@ -101,10 +103,18 @@
                   <td>
                       <nav class="navbar-expand-md">
                           <div class="container ">
-                            <div class="collapse navbar-collapse" >
-                              <div class="status-check"><i class="fas fa-check"></i></div>
-                              <div class="status-check"><i class="fas fa-times"></i></div>
-                          </div>
+                            <% if (info.status === 'onPay') { %>
+                              <div class="collapse navbar-collapse" onclick="paid_remove(this);">
+                                <div class="status-check" onclick="paid(this);"><i class="fas fa-check"></i></div>
+                                <div class="status-check" onclick="remove(this);"><i class="fas fa-times"></i></div>
+                                <div style="display:none;"><%= info.email %></div>
+                              </div>
+                            <% } else if (info.status === 'paid') { %>
+                              <div class="collapse navbar-collapse">
+                                  <div class="status-check" style="border: double #16c79a;"><i class="fas fa-check" style="color: #16c79a;"></i></div>
+                              </div>
+                            <% } %>
+
                       </div> <!-- container -->
                     </nav> <!-- navbar -->
                   </td>
@@ -116,6 +126,7 @@
           </table>
         </div>
       </div>
+
       <h2 class="text-uppercase" style="margin-left: 3rem;">Thống kê doanh</h2>
       <br>
       <table class="table" style="width: 50%;">
@@ -165,7 +176,7 @@
         </div> <!-- container -->
       </nav> <!-- navbar -->
 
-      <script type="text/javascript">
+    <script type="text/javascript">
       function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
         try {
           decimalCount = Math.abs(decimalCount);
@@ -186,12 +197,53 @@
       for (let i =0; i< money.length; i++) {
         money[i].innerHTML = formatMoney(money[i].innerHTML);
       }
-    };
 
-    var money = document.getElementsByClassName('money');
-    for (let i = 0; i < money.length; i++) {
-      money[i].innerHTML = formatMoney(money[i].innerHTML);
+    var status = 0;
+    function paid(event) {
+      $(event).css('border','double #16c79a');
+      $(event).contents().css('color', '#16c79a');
+      globalThis.status = 1;
     }
+
+    function remove(event) {
+      $(event).css('border','double #c70039');
+      $(event).contents().css('color', '#c70039');
+      globalThis.status = -1;
+    }
+
+    function paid_remove(event){
+
+      if (globalThis.status === '1') {
+        $($(event).contents()[3]).css('display','none');
+        // $('#hidden-status').val('paid');
+        var status = 'paid';
+      } else if (globalThis.status === '-1') {
+        $($(event).contents()[1]).css('display','none');
+        // $('#hidden-status').val('remove');
+        var status = 'remove';
+      }
+      var email = $(event).contents()[5].innerHTML;
+
+      fetch('/update-status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          status: status,
+          info_name: email
+        })
+      }).then(function (response){
+
+        if (response.status !== 200) {
+          console.log('Response status was not 200:' + $(response.status));
+          return ;
+        }
+        console.log("successfully update Payment");
+
+      });
+    }
+
   </script>
 </body>
 

@@ -15,6 +15,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+
 app.use(session({
   secret: "This is a key.",
   resave: false,
@@ -56,6 +59,7 @@ const infoSchema = new mongoose.Schema({
   totalNight: Number,
   name: String,
   email: String,
+  cmnd: Number,
   status: String,
   phone: Number,
   room: [{
@@ -64,7 +68,6 @@ const infoSchema = new mongoose.Schema({
     Deluxe: Number,
     price: Number,
   }],
-  status: String
 });
 
 const couponSchema = new mongoose.Schema({
@@ -135,10 +138,18 @@ app.get('/dashboard', function(req,res){
       Info.find({}, function(err, InfoFound){
         if (!err) {
           res.render('admin', { listInfo: InfoFound });
-        } else console.log(errr);
-      })
+        } else console.log(err);
+      });
     } else {
-      res.render('profile');
+      Info.findOne({email: req.user.username}, function(err, InfoFound){
+        if (!err) {
+          if (InfoFound) {
+            res.render('profile', {email: req.user.username, name: req.user.name, phone: req.user.phone, info: InfoFound});
+          } else {
+            res.render('profile', {email: req.user.username, name: req.user.name, phone: req.user.phone, info: ""});
+          }
+        } else console.log(err);
+      });
     }
   } else {
     res.redirect('/sign-in');
@@ -260,13 +271,37 @@ app.post('/add-coupon', function(req,res){
   res.redirect('/dashboard');
 });
 
-// app.post('/sign-in',
-//   passport.authenticate('local'),
-//   function(req, res) {
-//     // res.redirect('/users/' + req.user.username);
-//     res.redirect('/admin');
-// });
+app.post('/update-status', function(req,res) {
 
+  var status = req.body.status;
+  var info_name = req.body.info_name;
+  if (status === 'paid') {
+    Info.updateOne(
+      {email: info_name},
+      {status: status},
+      function(err){
+        if(!err) {
+          res.send(200);
+        } else {
+          res.send(err);
+        }
+      }
+    )
+  } else if (status === 'remove') {
+    Info.deleteOne(
+      {email: info_name},
+      function(err) {
+        if (!err) {
+          res.sendStatus(200);
+        } else {
+          res.send(err);
+        }
+      }
+    )
+  }
+
+
+})
 
 app.post('/mailchimp', function(req,res){
   const email = {

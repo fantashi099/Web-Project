@@ -38,54 +38,114 @@
      </div>
      <a href="/"><img id="hotel-logo1" src="images/RoyalHotel1.png" alt="hotel" style="margin-left: 55rem;margin-top: -3.8rem;"></a>
     <div class="row" style="margin-top:5rem;">
-        
+
         <div class="col-6" style=" padding-top: 2rem; margin-left:40rem;">
             <p style="font-size: 40px; font-weight: bolder;">THÔNG TIN CÁ NHÂN </p>
             <div style="border-bottom: 5px double black; margin-top: 3rem; width: 40rem;">
                 <b style="font-size: 0.8rem;">Name</b>
-                <p style="margin-bottom: 0.2rem;">Nguyen Huu Doanh</p>
+                <p style="margin-bottom: 0.2rem;"><%= name %></p>
             </div> <!-- form-group -->
-            
+
             <div style="border-bottom: 5px double black; margin-top: 3rem;width: 40rem;">
                 <b style="font-size: 0.8rem;">Email Address</b>
-                <p style="margin-bottom: 0.2rem;">huudoanh123qn@gmail.com</p>
+                <p style="margin-bottom: 0.2rem;"><%= email %></p>
             </div> <!-- form-group -->
 
             <div style="border-bottom: 5px double black; margin-top: 3rem;width: 40rem;">
                 <b style="font-size: 0.8rem;">Phone Number</b>
-                <p style="margin-bottom: 0.2rem;">0915140025</p>
+                <p style="margin-bottom: 0.2rem;"><%= phone %></p>
             </div> <!-- form-group -->
             <br>
-            <p style="font-size: 30px; font-weight: bolder; ">CHI TIẾT ĐẶT PHÒNG CỦA BẠN</p>
-            <div style="border-style: solid; width: 30rem;">
-                <p style="font-weight: bolder; border-bottom: 5px ridge;"> <span style="margin-left:1rem"> NHẬN PHÒNG</span><span style="margin-left: 7.5rem;"> TRẢ PHÒNG</span></p>
-                <div class="container">
+            <% if(info) { %>
+
+              <p style="font-size: 30px; font-weight: bolder; ">CHI TIẾT ĐẶT PHÒNG CỦA BẠN</p>
+              <div style="border-style: solid; width: 30rem;">
+                  <div class="container">
+                      <div class="row" style="margin-left:0.05rem">
+                        <div class="col-6" style="padding-left:0px">
+                          <b>Nhận phòng</b> <br>
+                          Ngày <%= String(info.checkIn.getDate()) +'/'+ String(info.checkIn.getMonth() + 1) + '/' + String(info.checkIn.getFullYear()) %> <br>
+                          Từ 15:00 PM
+                        </div>
+                        <div class="col-6" style="padding-left:0px">
+                          <b>Trả phòng</b> <br>
+                           Ngày <%= String(info.checkOut.getDate()) +'/'+ String(info.checkOut.getMonth() + 1) + '/' + String(info.checkOut.getFullYear()) %> <br>
+                          Cho đến 12:00 AM
+                        </div>
+                        <div class="col-6" style="padding-left:0px"> <b>Tổng thời gian lưu trú: </b> <br />
+                          <span style="padding-top: 1rem;"> <%= info.totalNight %></span>
+                        </div>
+                        <div class="col-60" style="padding-left:0px">
+                          <b>Người lớn:</b> <%= info.totalPerson[0].adults %>   <br>
+                          <b>Trẻ em:</b> <%= info.totalPerson[0].childrens %>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="container" style="border-top:5px ridge">
                     <div class="row" style="margin-left:0.05rem">
                       <div class="col-6" style="padding-left:0px">
-                        Ngày 5/1/2021 <br>
-                        Từ 15:00
+                        <b>Trạng thái:</b>
                       </div>
                       <div class="col-6" style="padding-left:0px">
-                        Ngày 6/1/2021 <br>
-                        Cho đến 12:00 
+                        <% if(info.status === 'onPay') { %>
+                          <span style="font-weight: bolder">Chưa thanh toán</span>
+                        <% } else { %>
+                          <span style="font-weight: bolder;">Đã thanh toán</span>
+                        <% } %>
                       </div>
-                      <div> Tổng thời gian lưu trú: <br>
-                      <span style="font-weight: bolder; padding-top: 1rem;"> 1 đêm</span>
+                      <div class="col-6" style="padding-left:0px">
+                        <b>Phòng bạn đã đặt:</b>
+                      </div>
+                      <div class="col-6" style="padding-left:0px">
+                        <% if (info.room[0].Presidential !== 0) { %>
+                          Phòng Presidential: <%= info.room[0].Presidential %> giường <br>
+                        <% } %>
+
+                        <% if (info.room[0].Excutive !== 0) { %>
+                          Phòng Excutive: <%= info.room[0].Excutive %> giường <br>
+                        <% } %>
+
+                        <% if (info.room[0].Deluxe !== 0) { %>
+                          Phòng Deluxe: <%= info.room[0].Deluxe %> giường <br>
+                        <% } %>
+                      </div>
+                      <div class="col-6" style="padding-left:0px">
+                        <b>Tổng cộng:</b>
+                      </div>
+                      <div class="col-6" style="padding-left:0px">
+                        <span class="money"><%= info.room[0].price %></span> VNĐ
                       </div>
                     </div>
-                </div>
-                
-                <div style="border-top:5px ridge">
-                    <span style="margin-left:1rem"> Trạng thái:</span>
-                    <br>
-                    <span style="font-weight: bolder; padding-top: 1rem; margin-left:1rem ;">Đã thanh toán</span>
-                    <br>
-                    <span style="margin-left:1rem; font-weight: bolder;">Bạn đã chọn:</span>
-                    <span style="margin-left:1rem">Phòng presidum</span>
-                </div>
-            </div>
+                  </div>
+              </div>
+
+            <% } %>
+
         </div>
     </div>
-        
+
+<script type="text/javascript">
+function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
+  try {
+    decimalCount = Math.abs(decimalCount);
+    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+    const negativeSign = amount < 0 ? "-" : "";
+
+    let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+    let j = (i.length > 3) ? i.length % 3 : 0;
+
+    return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+  } catch (e) {
+    console.log(e)
+  }
+};
+
+var money = document.getElementsByClassName('money');
+for (let i =0; i< money.length; i++) {
+  money[i].innerHTML = formatMoney(money[i].innerHTML);
+}
+</script>
 </body>
 </html>
