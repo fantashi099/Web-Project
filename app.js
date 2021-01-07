@@ -255,12 +255,13 @@ app.post('/payment-info', function(req,res){
     email: req.body.email,
     status: req.body.status,
     phone: req.body.phone,
+    cmnd: req.body.cmnd,
     room: Room,
     status: "onPay"
   });
 
     bookItem.save();
-    res.render('done',{'name': req.body.fisrtName + " " + req.body.lastName, 'email':req.body.email ,'checkIn': req.body.check_in, 'checkOut':req.body.check_out,'totalNight':req.body.total_night, 'totalPerson': totalPerson, 'room': Room, 'status': "onPay"});
+    res.render('done',{'name': req.body.fisrtName + " " + req.body.lastName, 'email':req.body.email,'cmnd': req.body.cmnd ,'checkIn': req.body.check_in, 'checkOut':req.body.check_out,'totalNight':req.body.total_night, 'totalPerson': totalPerson, 'room': Room, 'status': "onPay"});
 
 });
 
@@ -353,7 +354,7 @@ app.post('/mailchimp', function(req,res){
 
   const options = {
     method: "POST",
-    auth: "tien:da7a98a4f8fa0f237b39f774aeb8fc6d-us10"
+    auth: "tien:7a1b6f6a9dc71ad9c064d4ebc40504b7-us10"
   }
 
   const request = https.request(url, options, function(response){
