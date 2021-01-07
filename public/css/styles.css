@@ -181,10 +181,10 @@ background-color: rgb(245, 245, 245);
   transform: translate(-50%, -50%);
 }
 .dropbtn {
-  padding: 12px;
+  padding: 6px;
   font-size: 16px;
   border: none;
-  width: 5rem;
+  width: 4.6rem;
 }
 
 .dropdown {
@@ -197,7 +197,7 @@ background-color: rgb(245, 245, 245);
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 80px;
+  min-width: 4.5rem;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   margin-top: 2rem;
