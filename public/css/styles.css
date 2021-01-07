@@ -181,9 +181,10 @@ background-color: rgb(245, 245, 245);
   transform: translate(-50%, -50%);
 }
 .dropbtn {
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
   border: none;
+  width: 5rem;
 }
 
 .dropdown {
