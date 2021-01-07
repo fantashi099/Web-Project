@@ -22,21 +22,27 @@
 </head>
 
 <body>
-    <div class="bg-secondary text-light py-3 navbar-expand-md">
-        <div class="row"    >
-            <div class="col-md-2">
-                <div class="icons d-flex justify-content-between collapse navbar-collapse">
-                    <a href="http://www.instagram.com"><i class="fas fa-phone fa-10s" style="color:white;" ></i></a>
-                    <a class="text-light"> 19001500</a>&nbsp;
-                    <a href="http://www.instagram.com"><i class="fab fa-instagram fa-10s" ></i></a>
-                    <a href="http://www.facebook.com"><i class="fab fa-facebook-square fa-xs"></i></a>
-                    <a href="http://www.twitter.com"><i class="fab fa-twitter-square fa-xs"></i></a>
-                    <a href="http://www.youtube.com"><i class="fab fa-youtube-square fa-xs"></i></a>
-                </div>
-            </div> <!-- col-md-4 mx-auto -->
-        </div>
-     </div>
-     <a href="/"><img id="hotel-logo1" src="images/RoyalHotel1.png" alt="hotel" style="margin-left: 45rem;margin-top: -3.8rem;"></a>
+  <div class="bg-secondary text-light py-3 navbar-expand-md">
+      <div class="row"    >
+          <div class="col-md-2">
+              <div class="icons d-flex justify-content-between collapse navbar-collapse">
+
+                  <a href="http://www.instagram.com"><i class="fas fa-phone fa-10s" style="color:white;" ></i></a>
+                  <a class="text-light"> 19001500</a>&nbsp;
+                  <a href="http://www.instagram.com"><i class="fab fa-instagram fa-10s" ></i></a>
+                  <a href="http://www.facebook.com"><i class="fab fa-facebook-square fa-xs" style="margin-left:0.5rem"></i></a>
+                  <a href="http://www.twitter.com"><i class="fab fa-twitter-square fa-xs" style="margin-left:0.5rem"></i></a>
+                  <a href="http://www.youtube.com"><i class="fab fa-youtube-square fa-xs" style="margin-left:0.5rem"></i></a>
+              </div>
+          </div> <!-- col-md-4 mx-auto -->
+      </div>
+   </div>
+<div class="container">
+ <div class="row">
+   <div class="col align-self-center" style="text-align: center;">
+     <a href="/"><img id="hotel-logo1" src="images/RoyalHotel1.png" alt="hotel" style="margin-left: rem;margin-top: -3.8rem;"></a>
+   </div>
+</div>
      <br><br><br>
     <div class="container" style="padding-left: 4rem;">
         <div class=row>
@@ -54,14 +60,16 @@
         </div>
         <div class="row" style="padding-left: 1rem; padding-top: 1rem;">
             <div class="col-12 d-flex justify-content-between" style="background-color: gray; padding-top: 0.5rem; padding-bottom: 0.5rem; padding-left: 1.5rem;">
-                12/25/2020 - 12/26/2020 | 1 Night | 1 Guest | 1 Room
+                <%= checkIn %> - <%= checkOut %> | <%= stayNight %> Night | <%= totalPerson %> Guest | <%= totalChildren %>
             </div>
         </div>
         <div class="row" style="padding-left: 1rem;">
             <div class="col-12" style="background-color: #F4F2ED; padding-top: 1rem; padding-left: 1.5rem;">
-                <p class="text-uppercase" style="font-weight:bolder"> 1 Phòng Deluxe King</p>
+                <span class="text-uppercase" style="font-weight:bolder"><%= Deluxe %> Phòng Deluxe |</span>
+                <span class="text-uppercase" style="font-weight:bolder"><%= Excutive %> Phòng Excutive</span>
+                <p class="text-uppercase" style="font-weight:bolder"><%= Presidential %> Phòng Presidential</p>
                 <hr class="left" style="background-color:black;border-width: 0.1rem;">
-                <p><span style="font-weight:border"><b> Total Price for Stay:</b> </span><span style="padding-left: 3rem;"> 2.800.000 đ</span></p>
+                <p><span style="font-weight:border"><b> Total Price for Stay:</b> </span><span style="padding-left: 3rem;" id="info-price"><%= totalPrice %></span></p>
                 <br>
                 <b>Guest Information</b>
             </div>
@@ -78,11 +86,11 @@
                 <input type="hidden" name="Excutive" value="<%= Excutive %>">
                 <input type="hidden" name="Deluxe" value="<%= Deluxe %>">
                 <input type="hidden" name="total_night" value="<%= stayNight %>">
-                <input type="hidden" name="total_price" value="<%= totalPrice %>">
+                <input type="hidden" name="total_price" id="input_info_price" value="<%= totalPrice %>">
                 <input type="hidden" name="status" value="Booking">
                   <span><b>Frist Name</b> <b style="padding-left: 11.5rem;">Last name</b></span>
                   <div class="form-group left">
-                      <input name="fisrtName" class="form-control h-2" type="text" required>
+                      <input name="fisrtName" value="<%= fullName %>" class="form-control h-2" type="text" required>
                   </div> <!-- form-group -->
                   <div class="form-group right">
                       <input name="lastName" class="form-control h-2" type="text" required>
@@ -90,16 +98,23 @@
                   <br>
                   <b>Email Address</b>
                   <div class="form-group">
-                      <input name="email" class="form-control h-2" type="text">
+                      <input name="email" value="<%= Email %>" class="form-control h-2" type="text">
                     </div> <!-- form-group -->
 
                   <b>Phone Number</b>
+                  <div id="zxc" style="display:none;"><%= Coupon %></div>
                   <div class="form-group">
-                      <input name="phone" class="form-control h-2" type="text" required>
-                    </div> <!-- form-group -->
+                      <input name="phone" value="<%= Phone %>" class="form-control h-2" type="text" required>
+                  </div> <!-- form-group -->
+
+                  <b>Discount Coupon</b>
+                  <div class="form-group">
+                      <input id="input_coupon" class="form-control h-2" type="text" onkeypress="apply();">
+                  </div> <!-- form-group -->
+
                   <b>Yêu cầu thêm (tùy chọn)</b>
                   <div class="form-group">
-                      <input name="option" class="form-control" type="text" style="height: 5rem;">
+                      <input name="option" class="form-control" type="text" style="height: 5rem;" >
                     </div> <!-- form-group -->
 
               </div>
@@ -169,6 +184,39 @@
     </div>
     <br><br>
 
+  <script type="text/javascript">
+    function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
+      try {
+        decimalCount = Math.abs(decimalCount);
+        decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
 
+        const negativeSign = amount < 0 ? "-" : "";
+
+        let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+        let j = (i.length > 3) ? i.length % 3 : 0;
+
+        return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    let totalPrice = document.getElementById('info-price');
+    let inputPrice = document.getElementById('input_info_price');
+
+    let _coupon = document.getElementById('zxc');
+    let input_coupon = document.getElementById('input_coupon');
+
+    function apply(event){
+
+      if (_coupon.innerHTML === input_coupon.value) {
+        inputPrice.value = inputPrice.value * 0.9;
+        totalPrice.innerHTML = formatMoney(inputPrice.value);
+      }
+    }
+
+    totalPrice.innerHTML = formatMoney(inputPrice.value);
+
+  </script>
 </body>
 </html>
