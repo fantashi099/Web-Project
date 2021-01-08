@@ -55,7 +55,7 @@ $ localhost:3000
 
 ### Demo:
 
-[demo](demo.mp4)
+[![demo](https://i9.ytimg.com/vi/tfaJpC0Sigk/mq2.jpg?sqp=CIyC4f8F&rs=AOn4CLA9kOKS1LAe80-Z1C0Novf5GOlu-g)](https://www.youtube.com/watch?v=tfaJpC0Sigk)
 
 
 [Trần Minh Tiến]: <https://github.com/fantashi099>
